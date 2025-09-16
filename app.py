@@ -3,7 +3,7 @@ from flask import Flask, request, render_template, redirect, url_for, session
 from database_manager import get_db_connection, USE_MYSQL, PLACEHOLDER
 import plotly_graphs
 import os
-from sms_gateway import send_custom_sms
+# --from sms_gateway import send_custom_sms
 
 app = Flask(__name__)
 app.secret_key = os.getenv("FLASK_SECRET_KEY", "supersecret")
@@ -16,7 +16,7 @@ def ensure_database():
         connection = pymysql.connect(
             host=os.getenv("MYSQL_HOST", "localhost"),
             user=os.getenv("MYSQL_USER", "root"),
-            password=os.getenv("MYSQL_PASSWORD", "")
+            password=os.getenv("MYSQL_PASSWORD", "Admin@123")
         )
         with connection.cursor() as cursor:
             cursor.execute(f"CREATE DATABASE IF NOT EXISTS `{db_name}`")
